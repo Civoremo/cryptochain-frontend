@@ -12,20 +12,22 @@ class TransactionPool extends Component {
   state = { transactionPoolMap: {} };
 
   fetchTransactionPoolMap = () => {
-    fetch(`${process.env.BLOCKCHAIN_URL}/api/transaction-pool-map`)
+    fetch(`${process.env.REACT_APP_BLOCKCHAIN_URL}/api/transaction-pool-map`)
       .then((res) => res.json())
       .then((json) => this.setState({ transactionPoolMap: json }));
   };
 
   fetchMineTransactions = () => {
-    fetch(`${process.env.BLOCKCHAIN_URL}/api/mine-transactions`).then((res) => {
-      if (res.status === 200) {
-        alert("success");
-        history.push("./blocks");
-      } else {
-        alert("The mine-transactions block request did not complete");
+    fetch(`${process.env.REACT_APP_BLOCKCHAIN_URL}/api/mine-transactions`).then(
+      (res) => {
+        if (res.status === 200) {
+          alert("success");
+          history.push("./blocks");
+        } else {
+          alert("The mine-transactions block request did not complete");
+        }
       }
-    });
+    );
   };
 
   componentDidMount() {
