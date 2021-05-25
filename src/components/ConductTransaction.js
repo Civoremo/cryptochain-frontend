@@ -19,7 +19,7 @@ class ConductTransaction extends Component {
   consductTransaction = () => {
     const { recipient, amount } = this.state;
 
-    fetch("http://localhost:3000/api/transact", {
+    fetch(`${process.env.BLOCKCHAIN_URL}/api/transact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ recipient, amount }),

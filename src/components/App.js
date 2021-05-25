@@ -10,7 +10,7 @@ class App extends Component {
   state = { walletInfo: {} };
 
   componentDidMount() {
-    fetch("http://localhost:3000/api/wallet-info")
+    fetch(`${process.env.BLOCKCHAIN_URL}/api/wallet-info`)
       .then((res) => res.json())
       .then((json) => this.setState({ walletInfo: json }));
   }

@@ -8,7 +8,7 @@ class Blocks extends Component {
   state = { blocks: [] };
 
   componentDidMount() {
-    fetch("http://localhost:3000/api/blocks")
+    fetch(`${process.env.BLOCKCHAIN_URL}/api/blocks`)
       .then((res) => res.json())
       .then((json) => this.setState({ blocks: json }));
   }

@@ -12,13 +12,13 @@ class TransactionPool extends Component {
   state = { transactionPoolMap: {} };
 
   fetchTransactionPoolMap = () => {
-    fetch(`http://localhost:3000/api/transaction-pool-map`)
+    fetch(`${process.env.BLOCKCHAIN_URL}/api/transaction-pool-map`)
       .then((res) => res.json())
       .then((json) => this.setState({ transactionPoolMap: json }));
   };
 
   fetchMineTransactions = () => {
-    fetch("http://localhost:3000/api/mine-transactions").then((res) => {
+    fetch(`${process.env.BLOCKCHAIN_URL}/api/mine-transactions`).then((res) => {
       if (res.status === 200) {
         alert("success");
         history.push("./blocks");
